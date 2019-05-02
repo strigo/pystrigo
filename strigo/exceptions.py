@@ -1,0 +1,2 @@
+class StrigoApiError(Exception):
+    pass
