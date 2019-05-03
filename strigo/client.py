@@ -1,9 +1,11 @@
 import json
 
+# pytype: disable=pyi-error
 import requests
 from requests.packages import urllib3
 
 from box import Box
+# pytype: enable=pyi-error
 
 from . import endpoints
 from .logger import log

@@ -1,6 +1,6 @@
 import os
 
-import click
+import click  # pytype: disable=pyi-error
 
 from . import utils
 from .logger import log

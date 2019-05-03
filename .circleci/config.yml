@@ -4,9 +4,10 @@ workflows:
   test:
     jobs:
       - test-py3pylint
+      - test-py3pytype
 
 jobs:
-  test-py3pylint:
+  test-py3pylint: &test-template
     docker:
       - image: circleci/python:3.6-jessie
     environment:
@@ -34,3 +35,9 @@ jobs:
             - .tox
           key: v1-dependencies-{{ checksum "setup.py" }}-{{ checksum "dev-requirements.txt" }}
 
+  test-py3pytype:
+    <<: *test-template
+    environment:
+      - TOX_ENV: py3pytype
+    docker:
+      - image: circleci/python:3.6-jessie
