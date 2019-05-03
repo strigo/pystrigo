@@ -11,7 +11,11 @@ from .client import Strigo
 @click.argument('METHOD')
 @click.argument('ENDPOINT')
 @click.argument('ARGUMENTS', nargs=-1)
-def request(method, endpoint, arguments):
+@click.option('-v', '--verbose', is_flag=True, default=False, help='Set debug level logging')
+def request(method, endpoint, arguments, verbose):
+    if verbose:
+        log.set_level('DEBUG')
+
     org_id = os.getenv('STRIGO_ORG_ID')
     api_key = os.getenv('STRIGO_API_KEY')
     strigo_api_endpoint = os.getenv('STRIGO_API_ENDPOINT')
