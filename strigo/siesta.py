@@ -1,4 +1,5 @@
 import os
+import json
 
 import click  # pytype: disable=pyi-error
 
@@ -35,8 +36,12 @@ def request(method, endpoint, arguments, verbose):
             params[key_value[0]] = key_value[1]
         elif '=' in arg:
             key_value = utils.split_kv(arg)
-            body[key_value[0]] = key_value[1]
-
+            try:
+                # Try loading JSON first
+                body[key_value[0]] = json.loads(key_value[1])
+            except (KeyError, json.decoder.JSONDecodeError):
+                # And fallback to a string.
+                body[key_value[0]] = key_value[1]
     request_endpoint = getattr(getattr(strigo, endpoint), method)
 
     try:
