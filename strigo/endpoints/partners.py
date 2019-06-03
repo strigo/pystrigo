@@ -32,19 +32,14 @@ class Partners:
 class PartnerMembers:
     def __init__(self, client):
         self.client = client
-        self.base = '/partners/{}/members'
+        self.base = '/partners/{partner_id}/members'
 
     def get(self, partner_id):
-        path = utils.join_url(self.base, partner_id)
+        path = utils.join_url(self.base, partner_id=partner_id)
 
         return self.client.get(path)
 
     def post(self, partner_id, body):
-        path = utils.join_url(self.base, partner_id)
-
-        return self.client.post(path, body=body)
-
-    def patch(self, partner_id, body):
-        path = utils.join_url(self.base, partner_id)
+        path = utils.join_url(self.base, partner_id=partner_id)
 
         return self.client.post(path, body=body)

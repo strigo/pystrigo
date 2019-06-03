@@ -41,10 +41,11 @@ class _HTTPClient:
     def _request(self, method, path, body=None):
         body = body or {}
         url = self.endpoint + path
-        log.debug('{} {}...'.format(method.upper(), path), **body)
-        response = getattr(requests, method)(url, data=body, headers=self.headers)
+
+        log.info('{} {}...'.format(method.upper(), path), **body)
+        response = getattr(requests, method)(url, json=body, headers=self.headers)
         if method != 'delete':
-            log.debug(
+            log.info(
                 '{} {} response'.format(method.upper(), path),
                 status_code=response.status_code,
                 data=json.dumps(json.loads(response.text), indent=4)
@@ -76,6 +77,9 @@ class Strigo:
         self.members = endpoints.Members(self._client)
         self.partners = endpoints.Partners(self._client)
         self.ondemand = endpoints.Ondemand(self._client)
+        self.resources = endpoints.Resources(self._client)
         self.workspaces = endpoints.Workspaces(self._client)
         self.enrollments = endpoints.Enrollments(self._client)
+        self.presentations = endpoints.Presentations(self._client)
         self.partner_members = endpoints.PartnerMembers(self._client)
+        self.presentation_notes = endpoints.PresentationNotes(self._client)

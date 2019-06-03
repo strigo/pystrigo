@@ -1,5 +1,7 @@
 # pystrigo
 
+**This is WIP**. Please do not consider this to be production ready.
+
 `pystrigo` is Strigo's official Python REST API client and CLI. It allows to easily retrieve information from Strigo's REST API and to automate processes.
 
 Visit [Strigo's REST API Reference](http://docs.strigo.io/api/reference) from more information on the API and on retrieving your `ORG_ID` and `API_KEY`.
@@ -84,6 +86,10 @@ event_id = response.data['id']
 
 ### CLI
 
+`pystrigo` exposes a CLI called `siesta` (Rest. Get it? :))
+
+This CLI is supposed to provide a reasonable abstraction on top of the client, just so that it's easier to perform actions without having to write code. It is not optimized as a standard CLI in itself.
+
 ```shell
 
 $ siesta --help
@@ -91,6 +97,10 @@ Usage: siesta [OPTIONS] METHOD ENDPOINT [ARGUMENTS]...
 
 Options:
   --help  Show this message and exit.
+
+export STRIGO_ORG_ID="YOUR_ORG_ID"  # Org admins can see in settings
+export STRIGO_API_KEY="YOUR_API_KEY"  # Org admins can see in settings
+export STRIGO_API_ENDPOINT="https://app.strigo.io/api/v1"
 
 # e.g.
 $ siesta GET classes :class_id="DsAnDSjmPe2wnCRw2"
@@ -105,3 +115,6 @@ $ siesta POST events \
 ...
 ```
 
+# Contributions
+
+Any contribution is appreciated. We'd like to add tests, pytype validations, an official pypi deployment, and API documentation.
