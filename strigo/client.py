@@ -44,12 +44,12 @@ class _HTTPClient:
 
         log.info('{} {}...'.format(method.upper(), path), **body)
         response = getattr(requests, method)(url, json=body, headers=self.headers)
-        if method != 'delete':
-            log.info(
-                '{} {} response'.format(method.upper(), path),
-                status_code=response.status_code,
-                data=json.dumps(json.loads(response.text), indent=4)
-            )
+        log.info(
+            '{} {} response'.format(method.upper(), path),
+            status_code=response.status_code,
+            # We return 201 on successful `delete` with no data.
+            data=json.dumps(json.loads(response.text), indent=4) if response.text else None
+        )
         return _Response(
             response.status_code,
             response.json() if method != 'delete' else None,
@@ -77,6 +77,9 @@ class Strigo:
         self.members = endpoints.Members(self._client)
         self.partners = endpoints.Partners(self._client)
         self.ondemand = endpoints.Ondemand(self._client)
+        self.resources = endpoints.Resources(self._client)
         self.workspaces = endpoints.Workspaces(self._client)
         self.enrollments = endpoints.Enrollments(self._client)
+        self.presentations = endpoints.Presentations(self._client)
         self.partner_members = endpoints.PartnerMembers(self._client)
+        self.presentation_notes = endpoints.PresentationNotes(self._client)
