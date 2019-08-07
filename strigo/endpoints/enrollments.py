@@ -18,6 +18,11 @@ class Enrollments:
 
         return self.client.post(path, body=body)
 
+    def patch(self, course_id, enrollment_id, body):
+        path = utils.join_url(self.base, enrollment_id, course_id=course_id)
+
+        return self.client.patch(path, body=body)
+
     def delete(self, course_id, enrollment_id):
         path = utils.join_url(self.base, enrollment_id, course_id=course_id)
 
