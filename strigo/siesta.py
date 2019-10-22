@@ -19,7 +19,7 @@ def request(method, endpoint, arguments, verbose):
 
     org_id = os.getenv('STRIGO_ORG_ID')
     api_key = os.getenv('STRIGO_API_KEY')
-    strigo_api_endpoint = os.getenv('STRIGO_API_ENDPOINT')
+    strigo_api_endpoint = os.getenv('STRIGO_API_ENDPOINT', 'https://app.strigo.io/api/v1')
 
     assert org_id
     assert api_key

@@ -5,6 +5,7 @@ from .partners import Partners
 from .ondemand import Ondemand
 from .resources import Resources
 from .workspaces import Workspaces
+from .event_usage import EventUsage
 from .enrollments import Enrollments
 from .partners import PartnerMembers
 from .presentations import Presentations

@@ -79,6 +79,7 @@ class Strigo:
         self.ondemand = endpoints.Ondemand(self._client)
         self.resources = endpoints.Resources(self._client)
         self.workspaces = endpoints.Workspaces(self._client)
+        self.event_usage = endpoints.EventUsage(self._client)
         self.enrollments = endpoints.Enrollments(self._client)
         self.presentations = endpoints.Presentations(self._client)
         self.partner_members = endpoints.PartnerMembers(self._client)
