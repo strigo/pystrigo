@@ -83,3 +83,4 @@ class Strigo:
         self.presentations = endpoints.Presentations(self._client)
         self.partner_members = endpoints.PartnerMembers(self._client)
         self.presentation_notes = endpoints.PresentationNotes(self._client)
+        self.workspace_resources = endpoints.WorkspaceResources(self._client)

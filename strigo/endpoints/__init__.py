@@ -9,3 +9,4 @@ from .enrollments import Enrollments
 from .partners import PartnerMembers
 from .presentations import Presentations
 from .presentation_notes import PresentationNotes
+from .workspace_resources import WorkspaceResources
