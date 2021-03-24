@@ -5,6 +5,7 @@ import requests
 from requests.packages import urllib3
 
 from box import Box
+
 # pytype: enable=pyi-error
 
 from . import endpoints
@@ -32,10 +33,7 @@ class _HTTPClient:
     def __init__(self, org_id, api_key, endpoint, use_box=False):
         self.endpoint = endpoint
         self.api_key = api_key
-        self.headers = {
-            'Accept': 'application/json',
-            'Authorization': 'Bearer {}:{}'.format(org_id, api_key)
-        }
+        self.headers = {'Accept': 'application/json', 'Authorization': 'Bearer {}:{}'.format(org_id, api_key)}
         self.use_box = use_box
 
     def _request(self, method, path, body=None):
@@ -48,12 +46,9 @@ class _HTTPClient:
             '{} {} response'.format(method.upper(), path),
             status_code=response.status_code,
             # We return 201 on successful `delete` with no data.
-            data=json.dumps(json.loads(response.text), indent=4) if response.text else None
+            data=json.dumps(json.loads(response.text), indent=4) if response.text else None,
         )
-        return _Response(
-            response.status_code,
-            response.json() if method != 'delete' else None,
-            use_box=self.use_box)
+        return _Response(response.status_code, response.json() if method != 'delete' else None, use_box=self.use_box)
 
     def get(self, path, body=None):
         return self._request('get', path, body)
