@@ -8,7 +8,7 @@ setup(
     packages=find_packages(include=['strigo', 'strigo/endpoints']),
     license='LICENSE',
     description='A REST Client for Strigo',
-    entry_points={'console_scripts': ['siesta = strigo.siesta:request']},
+    entry_points={'console_scripts': ['siesta = strigo.siesta:_siesta']},
     extras_require={
         'cli': ['click==7.1.2'],
     },
