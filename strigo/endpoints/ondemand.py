@@ -18,6 +18,11 @@ class Ondemand:
 
         return self.client.post(path, body=body)
 
+    def patch(self, course_id, body):
+        path = utils.join_url(self.base, course_id)
+
+        return self.client.patch(path, body=body)
+
     def delete(self, course_id):
         path = utils.join_url(self.base, course_id)
 
