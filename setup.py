@@ -5,7 +5,7 @@ setup(
     version='0.0.0',
     author='ops@strigo.io',
     author_email='ops@strigo.io',
-    packages=find_packages(include=['strigo', 'strigo/endpoints']),
+    packages=find_packages(include=['strigo', 'strigo.endpoints']),
     license='LICENSE',
     description='A REST Client for Strigo',
     entry_points={'console_scripts': ['siesta = strigo.siesta:request']},
