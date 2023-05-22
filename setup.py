@@ -13,7 +13,7 @@ setup(
         'cli': ['click==7.0.0'],
     },
     install_requires=[
-        'requests==2.21.0',
+        'requests==2.31.0',
         'python-box==3.4.0',
         'requests_toolbelt',
     ]
